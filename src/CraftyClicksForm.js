@@ -1,5 +1,5 @@
 /*!
- * Crafty Clicks API Wrapper v1.1.1
+ * Crafty Clicks API Wrapper v2.0.0
  * https://github.com/dwmsw/CraftyClicks.js
  *
  * Copyright 2014, Digital Web Media Limited
@@ -56,8 +56,6 @@ CraftyClicksForm.prototype.AddressLookup = function(event) {
     this.search('rapid', this.postCodeElement.value);
     // Get town
     this.town = this.getTown(); 
-    // Get locality
-    this.locality = this.getLocality();
     // Get County    
     this.county = this.getCounty();    
     // Get Postcode
@@ -89,29 +87,44 @@ CraftyClicksForm.prototype.AddressLookup = function(event) {
         // Set current address
         var current = this.addresses[i];
         // Empty array to hold the parts
-        var parts = [];  
+        var buildingParts = [];  
+        var streetParts = [];  
+
+        // Check if the department name is set
+        if (current.department_name !== "") {
+            buildingParts.push(current.department_name);
+        } 
         // Check if the organisation name is set
         if (current.organisation_name !== "") {
-            parts.push(current.organisation_name);
+            buildingParts.push(current.organisation_name);
         } 
-        // Check if the building name is set
-        if (current.building_name !== "") {
-            parts.push(current.building_name);
+        // Check if line 1 is set
+        if (current.line_1 !== "") {
+            streetParts.push(current.line_1);
         }
-        // Check if the building number is set
-        if (current.building_number !== "") {
-            parts.push(current.building_number);
+        // Check if line 2 is set
+        if (current.line_2 !== "") {
+            streetParts.push(current.line_2);
         }
         // Implode the array using a comma followed by a space
-        current.name = parts.join(", ");
+        current.name = buildingParts.join(", ");
+        // Implode the array using a comma followed by a space
+        if (streetParts.length > 0) {
+            streetParts = streetParts.join(", ");
+        } else {
+            streetParts = '';
+        }
         // Add the imploded name to the initial address object
         this.addresses[i].fullName = current.name;
-        // Join the town, county and postcode to the name variable
-        current.name += ', ' + this.town + ', ' + this.county + ', ' + this.postCode;
         // Set the option key to the array key
         option.value = i;
         // Set the option name to the imploded address
-        option.text = current.name;
+        if (buildingParts.length > 0) {
+            option.text = current.name + ', ';
+        } else {
+            option.text = '';
+        }
+        option.text += streetParts + ', ' + this.town + ', ' + this.county + ', ' + this.postCode;;
         // Append the option to the select
         this.select.appendChild(option);
     }
@@ -124,8 +137,9 @@ CraftyClicksForm.prototype.AddressLookup = function(event) {
  */
 CraftyClicksForm.prototype.ReturnAddress = function() {
     // Use the form elements and assign the chosen values to them
-    this.form.address.value = this.addresses[this.select.value].fullName;
-    this.form.locality.value = this.locality;
+    this.form.building.value = this.addresses[this.select.value].fullName;
+    this.form.address1.value = this.addresses[this.select.value].line_1;
+    this.form.address2.value = this.addresses[this.select.value].line_2;
     this.form.town.value = this.town;    
     this.form.county.value = this.county;    
     this.form.postcode.value = this.postCode;
@@ -138,8 +152,9 @@ CraftyClicksForm.prototype.ReturnAddress = function() {
 CraftyClicksForm.prototype.setForm = function(theForm) {
     // Use the supplied form object to grab the form elements based upon their ID. 
     this.form = {};
-    this.form.address = document.getElementById(theForm.address);
-    this.form.locality = document.getElementById(theForm.locality);
+    this.form.building = document.getElementById(theForm.building);
+    this.form.address1 = document.getElementById(theForm.address1);
+    this.form.address2 = document.getElementById(theForm.address2);
     this.form.town = document.getElementById(theForm.town);
     this.form.county = document.getElementById(theForm.county);
     this.form.postcode = document.getElementById(theForm.postcode);

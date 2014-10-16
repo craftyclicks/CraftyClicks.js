@@ -50,11 +50,13 @@ Using CraftyClicksForm is fairly simple, you have to set up an object to relates
 
 ```javascript
 var form = {
-    "address" : "AddressID",
-    "locality" : "LocalityID",
-    "town" : "TownID",
-    "county" : "CountyID",
-    "postcode" : "PostcodeID"
+    "building" : "HouseName",
+    "address1" : "Address1",
+    "address2" : "Address2",
+    "locality" : "Locality",
+    "town" : "Town",
+    "county" : "County",
+    "postcode" : "Postcode"
 }
 ```
 

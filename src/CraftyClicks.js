@@ -1,5 +1,5 @@
 /*!
- * Crafty Clicks API Wrapper v1.1.1
+ * Crafty Clicks API Wrapper v2.0.0
  * https://github.com/dwmsw/CraftyClicks.js
  *
  * Copyright 2014, Digital Web Media Limited
@@ -68,7 +68,7 @@ CraftyClicks.prototype.search = function(searchType, postCode) {
  * @return {array} The Addresses
  */
 CraftyClicks.prototype.getAddresses = function() {
-    return this.result.thoroughfares['0'].delivery_points;
+    return this.result.delivery_points;
 };
 
 /**
@@ -96,14 +96,6 @@ CraftyClicks.prototype.getTown = function() {
 };
 
 /**
- * Get the locality
- * @return {string} The locality
- */
-CraftyClicks.prototype.getLocality = function() {
-    return this.result.dependent_locality;
-};
-
-/**
  * Make a RapidAddress Request
  */
 CraftyClicks.prototype.RapidAddress = function() {
@@ -127,7 +119,7 @@ CraftyClicks.prototype.BasicAddress = function() {
 CraftyClicks.prototype.makeRequest = function(endpoint) {
 
     // Set up the URL
-    var url = this.baseURL + endpoint + '?key=' + this.apiKey + '&postcode=' + this.postCode;
+    var url = this.baseURL + endpoint + '?response=data_formatted&key=' + this.apiKey + '&postcode=' + this.postCode;
 
     // Create new XMLHttpRequest, has to be synchronous so we can handle response
     request = new XMLHttpRequest();
