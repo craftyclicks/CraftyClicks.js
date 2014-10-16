@@ -1,0 +1,60 @@
+html,
+body {
+  background: #347235;
+}
+
+.right {
+  float: right;
+}
+
+input,
+button {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1rem;
+  padding: 0 .5rem;
+}
+
+h1,
+.topHelp {
+  text-align: center;
+  color: #fff;
+}
+
+.topHelp {
+  line-height: 1.5rem;
+}
+.topHelp a {
+  color: #ccc;
+}
+
+.topHalf {
+  width: calc(50% - 1rem);
+}
+
+div {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+div form {
+  margin-top: 1rem;
+}
+div form input {
+  width: 100%;
+  margin: .2rem 0;
+}
+
+/* Style the CCForm select */
+.CCFormSelect {
+  margin-top: 1rem;
+  width: 100%;
+}

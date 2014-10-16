@@ -1,5 +1,5 @@
 /*!
- * Crafty Clicks API Wrapper v1.0.0
+ * Crafty Clicks API Wrapper v1.1.0
  * https://github.com/dwmsw/CraftyClicks.js
  *
  * Copyright 2014, Digital Web Media Limited
@@ -21,7 +21,7 @@ function CraftyClicks(apiKey) {
     } else {
         this.apiKey = 'xxxxx-xxxxx-xxxxx-xxxxx';
     }
-    this.baseURL = '//pcls1.craftyclicks.co.uk/json/';
+    this.baseURL = 'https://pcls1.craftyclicks.co.uk/json/';
     this.postCode = '';
     this.result = '';
 
@@ -35,11 +35,6 @@ CraftyClicks.prototype.getAll = function() {
     return this.result
 };
 
-/**
- * This is the main function to be used by the user
- * @param  {string} searchType Whether to make a basic or rapid search
- * @param  {string} postCode   The postcode to search upon
- */
 CraftyClicks.prototype.search = function(searchType, postCode) {
     // Check for a postcode and either set it or throw an exception
     if (postCode) {
@@ -66,6 +61,46 @@ CraftyClicks.prototype.search = function(searchType, postCode) {
     if (this.result.error_code) {
         throw this.result.error_msg;
     }
+};
+
+/**
+ * Get the Addresses
+ * @return {array} The Addresses
+ */
+CraftyClicks.prototype.getAddresses = function() {
+    return this.result.thoroughfares['0'].delivery_points;
+};
+
+/**
+ * Get the County
+ * @return {string} The County
+ */
+CraftyClicks.prototype.getCounty = function() {
+    return this.result.postal_county;
+};
+
+/**
+ * Get the postcode
+ * @return {string} The postcode
+ */
+CraftyClicks.prototype.getPostcode = function() {
+    return this.result.postcode;
+};
+
+/**
+ * Get the town
+ * @return {string} The town
+ */
+CraftyClicks.prototype.getTown = function() {
+    return this.result.town;
+};
+
+/**
+ * Get the locality
+ * @return {string} The locality
+ */
+CraftyClicks.prototype.getLocality = function() {
+    return this.result.dependent_locality;
 };
 
 /**
