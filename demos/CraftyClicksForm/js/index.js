@@ -1,6 +1,8 @@
 // Set up the form object which relates fields to input ID's
 var form = {
-  "address" : "Address",
+  "building" : "HouseName",
+  "address1" : "Address1",
+  "address2" : "Address2",
   "locality" : "Locality",
   "town" : "Town",
   "county" : "County",
