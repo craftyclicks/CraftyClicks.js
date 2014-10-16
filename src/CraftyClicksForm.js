@@ -1,5 +1,5 @@
 /*!
- * Crafty Clicks API Wrapper v1.1.0
+ * Crafty Clicks API Wrapper v1.1.1
  * https://github.com/dwmsw/CraftyClicks.js
  *
  * Copyright 2014, Digital Web Media Limited
