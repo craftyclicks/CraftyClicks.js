@@ -42,7 +42,10 @@ CraftyClicksForm.prototype.FrontSearch = function(theButton, thePostcode) {
 /**
  * This will do the actual heavy lifting of this extension
  */
-CraftyClicksForm.prototype.AddressLookup = function() { 
+CraftyClicksForm.prototype.AddressLookup = function(event) { 
+    // Prevent submitting if inside form
+    event.preventDefault();
+
     // Check if any selects are in the DOM and delete if they are remove them
     var oldSelect = document.querySelectorAll('.CCFormSelect');
     if (oldSelect.length !== 0) {
