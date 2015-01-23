@@ -14,10 +14,9 @@
  * Lets define the CraftyClicksForm Constructor
  * @param {string} apiKey Your Crafty Clicks API Key
  */
-function CraftyClicksForm(apiKey) {
-    CraftyClicks.call(this, apiKey);
+function CraftyClicksForm(apiKey,doGeocode) {
+    CraftyClicks.call(this, apiKey,doGeocode);
     this.button = '';
-  
 }
 
 /**

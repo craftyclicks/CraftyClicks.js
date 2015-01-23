@@ -14,7 +14,7 @@
  * Lets define the CraftyClicks Constructor
  * @param {string} apiKey Your Crafty Clicks API Key
  */
-function CraftyClicks(apiKey) {
+function CraftyClicks(apiKey,doGeocode) {
     
     if (apiKey) {
         this.apiKey = apiKey;
@@ -24,6 +24,7 @@ function CraftyClicks(apiKey) {
     this.baseURL = 'https://pcls1.craftyclicks.co.uk/json/';
     this.postCode = '';
     this.result = '';
+    this.geocode = doGeocode;
 
 }
 
@@ -95,6 +96,20 @@ CraftyClicks.prototype.getTown = function() {
     return this.result.town;
 };
 
+CraftyClicks.prototype.getLat = function() {
+	if(typeof this.result.geocode == "undefined"){		
+		return null;
+	}
+	return this.result.geocode.lat;
+}
+
+CraftyClicks.prototype.getLng = function() {
+	if(typeof this.result.geocode == "undefined"){		
+		return null;
+	}
+	return this.result.geocode.lng;
+}
+
 /**
  * Make a RapidAddress Request
  */
@@ -120,6 +135,10 @@ CraftyClicks.prototype.makeRequest = function(endpoint) {
 
     // Set up the URL
     var url = this.baseURL + endpoint + '?response=data_formatted&key=' + this.apiKey + '&postcode=' + this.postCode;
+
+    if(this.geocode){
+        url += '&include_geocode=1';
+    }
 
     // Create new XMLHttpRequest, has to be synchronous so we can handle response
     request = new XMLHttpRequest();

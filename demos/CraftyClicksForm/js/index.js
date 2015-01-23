@@ -13,7 +13,7 @@ var myAddress = document.getElementById('LookForAddress');
 // Grab the postcode input element
 var myPostcode = document.getElementById('AddressPostcode');
 // New CraftyClicksForm instance
-var CC = new CraftyClicksForm();
+var CC = new CraftyClicksForm('xxxxx-xxxxx-xxxxx-xxxxx',1);
 // Set form fields
 CC.setForm(form);
 // Do Search
