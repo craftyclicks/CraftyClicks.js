@@ -1,12 +1,12 @@
 /*!
- * Crafty Clicks API Wrapper v2.0.0
- * https://github.com/dwmsw/CraftyClicks.js
+ * Crafty Clicks API Wrapper v2.0.1
+ * https://github.com/craftyclicks/CraftyClicks.js
  *
  * Copyright 2014, Digital Web Media Limited
  * Released under the MIT license
  * http://opensource.org/licenses/MIT
  *
- * Date: 2014-10-15
+ * Date: 2015-01-23
  */
 
 
