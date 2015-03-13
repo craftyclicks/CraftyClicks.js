@@ -1,8 +1,8 @@
 #CraftyClicks.js
 
-CraftyClicks.js is a JavaScript wrapper for the [CraftyClicks](https://craftyclicks.co.uk) API.
+CraftyClicks.js is a JavaScript wrapper for the [CraftyClicks](https://craftyclicks.co.uk) JSON API.
 
-You can access the API Documentation at the following URL: [https://craftyclicks.co.uk/api/jsonp-api-user-guide/](https://craftyclicks.co.uk/api/jsonp-api-user-guide/)
+You can access the JSON API Documentation at the following URL: [https://craftyclicks.co.uk/api/#json-api](https://craftyclicks.co.uk/api/#json-api)
 
 ## Requirements
 
